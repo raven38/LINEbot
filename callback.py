@@ -7,7 +7,7 @@ REPLY_ENDPOINT = 'https://api.line.me/v2/bot/message/reply'
 class Resource(object):
     def on_get(self, req, resp):
         resp.status = falcon.HTTP_200 
-        resp.body = ("Hello, World")
+        resp.body = "Hello, World"
         
     def on_post(self, req, resp):
         body = req.stream.read()        
