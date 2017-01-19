@@ -32,7 +32,7 @@ class Resource(object):
 @handler.add(MessageEvent, message=TextMessage)
 def handle_mesage(event):
     print(type(event))
-    line_bot_api.reply_message(event['events']['replyToken'], TextSendMessage(text=event['events'][0]['message']['text']))
+    line_bot_api.reply_message(event.reply_token, TextSendMessage(text=event.message.text))
                                
 app = falcon.API()
 
