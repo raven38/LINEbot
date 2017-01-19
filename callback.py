@@ -19,8 +19,10 @@ class Resource(object):
         print(req.headers)
         signature = req.headers['X-LINE-SIGNATURE']
         body = req.stream.read()
-        body = json.loads(body.decode('utf-8'))
-        replyToken = body['events'][0]['replyToken']
+        body = body.decode('utf-8')
+#        body = json.loads(body.decode('utf-8'))
+#        replyToken = body['events'][0]['replyToken']
+
         
         try:
             handler.handle(body, signature)
@@ -29,6 +31,7 @@ class Resource(object):
 
 @handler.add(MessageEvent, message=TextMessage)
 def handle_mesage(event):
+    print(type(event))
     line_bot_api.reply_message(event['events']['replyToken'], TextSendMessage(text=event['events'][0]['message']['text']))
                                
 app = falcon.API()
