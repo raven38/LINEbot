@@ -16,6 +16,7 @@ class Resource(object):
         resp.body = "Hello, World"
 
     def on_post(self, req, resp):
+        print(req.headers)
         signature = req.headers['X-Line-Signature']
         body = req.stream.read()
         body = json.loads(body.decode('utf-8'))
