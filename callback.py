@@ -17,7 +17,7 @@ class Resource(object):
 
     def on_post(self, req, resp):
         print(req.headers)
-        signature = req.headers['X-Line-Signature']
+        signature = req.headers['X-LINE_SIGNATURE']
         body = req.stream.read()
         body = json.loads(body.decode('utf-8'))
         replyToken = body['events'][0]['replyToken']
