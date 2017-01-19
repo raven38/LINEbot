@@ -16,10 +16,10 @@ class Resource(object):
         resp.body = "Hello, World"
 
     def on_post(self, req, resp):
-        signature = req.headers['X-LINE-Signature']
+        signature = req.headers['X-Line-Signature']
         body = req.stream.read()
         body = json.loads(body.decode('utf-8'))
-        replyToken = body['events'][0]['replayToken']
+        replyToken = body['events'][0]['replyToken']
         
         try:
             handler.handle(body, signature)
