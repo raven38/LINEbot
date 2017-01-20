@@ -17,17 +17,12 @@ class Resource(object):
         resp.body = "Hello, World"
 
     def on_post(self, req, resp):
-<<<<<<< HEAD
-=======
         print(req.headers)
         signature = req.headers['X-LINE-SIGNATURE']
         body = req.stream.read()
         body = body.decode('utf-8')
 #        body = json.loads(body.decode('utf-8'))
 #        replyToken = body['events'][0]['replyToken']
->>>>>>> d97c76e9f363cd08394de3e00724abf7289949cf
-
-        
         try:
             handler.handle(body, signature)
         except InvalidSignatureError:
