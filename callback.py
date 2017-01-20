@@ -1,3 +1,4 @@
+from wsgiref import simple_server
 import falcon
 import json
 
@@ -10,8 +11,10 @@ class Resource(object):
         resp.body = ("Hello, World")
         
     def on_post(self, req, resp):
-        body = req.stream.read()        
-        data = json.loads(body.decode('utf-8'))
+        body = req.stream.read()
+        print(body)
+#        data = json.loads(body.decode('utf-8'))
+#        data = json.load(req.stream)
 #        replyToken = data['replayToken']
 
         
