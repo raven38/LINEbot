@@ -17,8 +17,9 @@ class Resource(object):
         body = body.decode('utf-8')
         try:
             handler.handle(body, signature)
-        except InvalidSignatureError:
-            abort(400)
+        except InvalidSignatureError as e:
+            print(e)
+#            abort(400)
 
 @handler.add(MessageEvent, message=TextMessage)
 def handle_message(event):
